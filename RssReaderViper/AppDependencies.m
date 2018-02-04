@@ -29,7 +29,7 @@
 
 @implementation AppDependencies
 
-- (id)init{
+- (id)init {
     
     if ((self = [super init])) {
         [self configureDependencies];
@@ -78,7 +78,7 @@
     articlesWireframe.articlesPresenter = articlesPresenter;
     articlesWireframe.rootWireframe = rootWireframe;
     articlesWireframe.detailsWireframe = detailsWireframe;
-    self.articlesWireframe = articlesWireframe;
+    _articlesWireframe = articlesWireframe;
     
     articlesDataManager.articlesInteractor = articlesInteractor;
     
