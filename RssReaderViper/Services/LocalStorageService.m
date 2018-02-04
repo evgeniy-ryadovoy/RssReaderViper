@@ -17,18 +17,6 @@
 
 @implementation LocalStorageService
 
-+ (instancetype)sharedInstance {
-    static LocalStorageService *service;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        service = [[self alloc] init];
-    });
-    
-    return service;
-}
-
-
 - (void)saveArticlesToStorage:(NSArray <ArticleEntity *> *)articles {
     
     if (articles.count) {
@@ -36,8 +24,7 @@
     }
 }
 
-
-// Simplest implementation for test app. We can use some algoritms, keep data in cache, core data etc
+// Simplest implementation for test app. We can use some algorithms, keep data in cache, core data etc
 - (ArticleEntity *)getArticleWithUpcomingItemId:(NSInteger)upcomingItemId {
     
     if (self.articleItems.count <= upcomingItemId) {

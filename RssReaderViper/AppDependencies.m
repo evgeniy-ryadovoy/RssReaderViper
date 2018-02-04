@@ -18,6 +18,9 @@
 #import "DetailsInteractor.h"
 #import "DetailsDataManager.h"
 
+#import "NetworkService.h"
+#import "LocalStorageService.h"
+
 @interface AppDependencies ()
 
 @property (nonatomic, strong) ArticlesWireframe *articlesWireframe;
@@ -43,20 +46,27 @@
 
 - (void)configureDependencies
 {
+    //Network Service
+    NetworkService *networkService = [[NetworkService alloc] init];
+
+    //Local Storage Service
+    LocalStorageService *storageService = [[LocalStorageService alloc] init];
+
     // Root Level Classes
     RootWireframe *rootWireframe = [[RootWireframe alloc] init];
     
     // Articles Module Classes
     ArticlesWireframe *articlesWireframe = [[ArticlesWireframe alloc] init];
     ArticlesPresenter *articlesPresenter = [[ArticlesPresenter alloc] init];
-    ArticlesDataManager *articlesDataManager = [[ArticlesDataManager alloc] init];
+    ArticlesDataManager *articlesDataManager = [[ArticlesDataManager alloc] initWithNetworkService:networkService
+                                                                                 andStorageService:storageService];
     ArticlesInteractor *articlesInteractor = [[ArticlesInteractor alloc] init];
     
     // Details Module Classes
     DetailsWireframe *detailsWireframe = [[DetailsWireframe alloc] init];
     DetailsInteractor *detailsInteractor = [[DetailsInteractor alloc] init];
     DetailsPresenter *detailsPresenter = [[DetailsPresenter alloc] init];
-    DetailsDataManager *detailsDataManager = [[DetailsDataManager alloc] init];
+    DetailsDataManager *detailsDataManager = [[DetailsDataManager alloc] initWithStorageService:storageService];
     
     // Articles Module Classes
     articlesInteractor.articlesPresenter = articlesPresenter;

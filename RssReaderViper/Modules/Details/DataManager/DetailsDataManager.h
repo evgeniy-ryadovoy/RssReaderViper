@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "DetailsContract.h"
+@class LocalStorageService;
 
 @interface DetailsDataManager : NSObject <DetailsDataManagerInterface>
 
 @property (weak, nonatomic) id <DetailsInteractorOutputInterface> detailsInteractor;
+
+- (instancetype)initWithStorageService:(LocalStorageService *)aStorageService;
 
 @end

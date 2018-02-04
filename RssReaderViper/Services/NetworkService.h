@@ -12,7 +12,6 @@ typedef void(^RequestCompletionBlock)(NSData *data, NSError *error);
 
 @interface NetworkService : NSObject
 
-+ (instancetype)sharedInstance;
 - (void)requestDataFromURL:(NSURL *)url withCompletionBlock:(RequestCompletionBlock)completionBlock;
 
 @end

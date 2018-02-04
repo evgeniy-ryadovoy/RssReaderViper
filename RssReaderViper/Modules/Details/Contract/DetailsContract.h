@@ -15,7 +15,7 @@
 
 @protocol DetailsView <NSObject>
 
-- (void)showDetailsFroArticle:(UpcomingItem *)article;
+- (void)showDetailsForArticle:(UpcomingItem *)article;
 
 @end
 

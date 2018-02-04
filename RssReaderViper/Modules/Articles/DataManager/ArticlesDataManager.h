@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ArticlesContract.h"
+@class NetworkService, LocalStorageService;
 
 @interface ArticlesDataManager : NSObject <ArticlesDataManagerInterface>
+
+- (instancetype)initWithNetworkService:(NetworkService *)aNetworkService
+                     andStorageService:(LocalStorageService *)aStorageService;
 
 @property (weak, nonatomic) id <ArticlesInteractorOutputInterface> articlesInteractor;
 

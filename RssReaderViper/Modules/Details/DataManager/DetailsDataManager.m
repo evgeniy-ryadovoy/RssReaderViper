@@ -10,10 +10,34 @@
 #import "LocalStorageService.h"
 #import "ArticleEntity.h"
 
+@interface DetailsDataManager ()
+
+@property (strong, nonatomic) LocalStorageService *storageService;
+
+@end
+
 @implementation DetailsDataManager
 
+- (id)init {
+    return [self initWithStorageService:nil];
+}
+
+- (instancetype)initWithStorageService:(LocalStorageService *)aStorageService {
+
+    if (self = [super init]) {
+
+        if (!aStorageService) {
+            aStorageService = [[LocalStorageService alloc] init];
+        }
+
+        _storageService = aStorageService;
+    }
+
+    return self;
+}
+
 - (void)fetchArticlesWithUpcomingItemId:(NSInteger)itemId {
-    ArticleEntity *article = [[LocalStorageService sharedInstance] getArticleWithUpcomingItemId:itemId];
+    ArticleEntity *article = [self.storageService getArticleWithUpcomingItemId:itemId];
     
     if (article) {
         [self articleFetched:article];

@@ -12,7 +12,6 @@
 
 @interface LocalStorageService : NSObject
 
-+ (instancetype)sharedInstance;
 - (void)saveArticlesToStorage:(NSArray <ArticleEntity *> *)articles;
 - (ArticleEntity *)getArticleWithUpcomingItemId:(NSInteger)upcomingItemId;
 

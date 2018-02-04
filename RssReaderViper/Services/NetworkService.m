@@ -18,17 +18,6 @@
 const float kRequestTime = 15.0;
 const float kConnectionLiveTime = 15.0;
 
-+ (instancetype)sharedInstance {
-    static NetworkService *service;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        service = [[self alloc] init];
-    });
-    
-    return service;
-}
-
 - (void)requestDataFromURL:(NSURL *)url withCompletionBlock:(RequestCompletionBlock)completionBlock {
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     
